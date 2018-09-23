@@ -72,49 +72,49 @@ Start an Amazon EC2 and launch the instance without assigning a key pair.
 
 2. Click on **Launch Instance**.
 
-	><img src="IMAGES/img-5.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-5.png" alt="drawing" width="600px"/>
 
 <br/>
 
 3. Choose an Amazon Machine Image (AMI), for this example I choose **Amazon Linux 2 AMI (HVM), SSD Volume Type**.  Click **Select**.
 
-	><img src="IMAGES/img-6.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-6.png" alt="drawing" width="800px"/>
 
 <br/>
 
 4. Choose an Instance Type, for this example **t2.micro** will work.  Click **Next: Configure Instance Details**.
 
-	><img src="IMAGES/img-7.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-7.png" alt="drawing" width="800px"/>
 
 <br/>
 
 5. Configure Instance Details, under **IAM role** select the created role from **Step 1** which was  `AmazonEC2RoleforSSMRole`.  
 
-	><img src="IMAGES/img-8.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-8.png" alt="drawing" width="800px"/>
 
 <br/>
 
 6. Ensure that the EC2 is placed in a public subnet.  Click **Next: Add Storage**.
 
-	><img src="IMAGES/img-9.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-9.png" alt="drawing" width="800px"/>
 
 <br/>
 
 7. Add Storage, the default is fine.  Click **Next: Add Tags**.
 
-	><img src="IMAGES/img-10.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-10.png" alt="drawing" width="800px"/>
 
 <br/>
 
 8. Click **Add Tag** and for *Key* put `Name`.  For *Value* put `EC2noKeyPair`.  Click **Next: Configure Security Group**.
 
-	><img src="IMAGES/img-11.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-11.png" alt="drawing" width="800px"/>
 
 <br/>
 
 9. Configure Security Group, use an existing security group or create a new one.  Ensure that the EC2 instance has access to **Port 22** and put your EC2.  Leaving port 22 open to the world will leave the instance vulnerable.  Click **Review and Launch**.
 
-	><img src="IMAGES/img-12.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-12.png" alt="drawing" width="800px"/>
 
 <br/>
 
@@ -122,7 +122,7 @@ Start an Amazon EC2 and launch the instance without assigning a key pair.
 
 11. A pop up will appear to set an EC2 Key Pair.  Select **Proceed without a key pair** and **check the box** to *acknowledge that you will not be able to connect to the instance unless you know the password built into the AMI*.
 
-	><img src="IMAGES/img-13.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-13.png" alt="drawing" width="600px"/>
 
 </p></details>
 
