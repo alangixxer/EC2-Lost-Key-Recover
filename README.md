@@ -183,31 +183,31 @@ The Systems Manager gives an output that can run the command via the terminal an
 
 2. On the left hand side, expand the **SYSTEMS MANAGER SERVICES** section and click on **Run Command**.
 
-	><img src="IMAGES/img-14.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-14.png" alt="drawing" width="250px"/>
 
 <br/>
 
 3. Click **Run Command**.  The screen can appear different if this service has been used in the past.
 
-	><img src="IMAGES/img-15.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-15.png" alt="drawing" width="800px"/>
 
 <br/>
 
 4. In the **Command document** section choose **AWS-RunShellScript**.
 
-	><img src="IMAGES/img-16.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-16.png" alt="drawing" width="800px"/>
 
 <br/>
 
 5. In the **Select Targets by** section select the EC2 instance created from section 2.  If there are now instances then the **SSM Agent** might not be installed on the EC2 or the role from section 1 is miss-configured.
 
-	><img src="IMAGES/img-17.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-17.png" alt="drawing" width="500px"/>
 
 <br/>
 
 6. Go down to the bottom of the page and expand the **AWS Command Line Interface command** section.
 
-	><img src="IMAGES/img-18.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-18.png" alt="drawing" width="600px"/>
 
 <br/>
 
@@ -282,7 +282,7 @@ In this module you'll SSH into the EC2 instance.
 
 2. Copy the **Public DNS (IPv4)** from the running EC2 instance.  Shown on the far right of the below image.
 
-	><img src="IMAGES/img-19.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-19.png" alt="drawing" width="800px"/>
 
 <br/>
 
