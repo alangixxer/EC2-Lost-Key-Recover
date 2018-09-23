@@ -12,7 +12,6 @@ In order to complete this project you will need an AWS Account with access to cr
 
 Some of the resources you will launch as part of this workshop are eligible for the AWS free tier if your account is less than 12 months old. See the [AWS Free Tier page](https://aws.amazon.com/free/) for more details.
 
-
 ### Region Selection
 
 This workshop can be deployed in any AWS region that supports the following services:
@@ -22,7 +21,6 @@ This workshop can be deployed in any AWS region that supports the following serv
 
 You can refer to the [region table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) in the AWS documentation to see which regions have the supported services.
 
-
 ## Implementation Instructions
 
 Each of the following sections provides an implementation overview and detailed, step-by-step instructions. The overview should provide enough context for you to complete the implementation if you're already familiar with the AWS Management Console or you want to explore the services yourself without following a walk-through.
@@ -31,27 +29,32 @@ Each of the following sections provides an implementation overview and detailed,
 
 Create an IAM Role that will be later attached to an EC2 instance.  This role will allow an EC2 instance to have access to Systems Manager.
 
-
-
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
+
 1. From the AWS Management Console, click on **Services** and then select **IAM** in the *Security, Identity & Compliance* section.
 
 2. Select **Roles** in the left navigation bar and then choose **Create new role**.
 
-><img src="IMAGES/img-1.png" alt="drawing" width="800px"/><br/>
+	><img src="IMAGES/img-1.png" alt="drawing" width="800px"/><br/>
+
+<br/>
 
 3. Select **EC2** as service to use the role. Click **Next: Permissions**.
 
-><img src="IMAGES/img-2.png" alt="drawing" width="800px"/><br/>
+	><img src="IMAGES/img-2.png" alt="drawing" width="800px"/><br/>
+
+<br/>
 
 4. Type **SSM** in the search bar and check the box left of **AmazonEC2RoleforSSM**. Click **Next: Review**.
 
-><img src="IMAGES/img-3.png" alt="drawing" width="800px"/><br/>
+	><img src="IMAGES/img-3.png" alt="drawing" width="800px"/><br/>
+
+<br/>
 
 5. Give it the role name like `AmazonEC2RoleforSSMRole` and click **Create Role**.
 
-><img src="IMAGES/img-4.png" alt="drawing" width="800px"/><br/>
+	><img src="IMAGES/img-4.png" alt="drawing" width="800px"/><br/>
 
 </p></details>
 
@@ -69,41 +72,57 @@ Start an Amazon EC2 and launch the instance without assigning a key pair.
 
 2. Click on **Launch Instance**.
 
-<img src="IMAGES/img-5.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-5.png" alt="drawing" width="400px"/>
+
+<br/>
 
 3. Choose an Amazon Machine Image (AMI), for this example I choose **Amazon Linux 2 AMI (HVM), SSD Volume Type**.  Click **Select**.
 
-<img src="IMAGES/img-6.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-6.png" alt="drawing" width="400px"/>
+
+<br/>
 
 4. Choose an Instance Type, for this example **t2.micro** will work.  Click **Next: Configure Instance Details**.
 
-<img src="IMAGES/img-7.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-7.png" alt="drawing" width="400px"/>
+
+<br/>
 
 5. Configure Instance Details, under **IAM role** select the created role from **Step 1** which was  `AmazonEC2RoleforSSMRole`.  
 
-<img src="IMAGES/img-8.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-8.png" alt="drawing" width="400px"/>
+
+<br/>
 
 6. Ensure that the EC2 is placed in a public subnet.  Click **Next: Add Storage**.
 
-<img src="IMAGES/img-9.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-9.png" alt="drawing" width="400px"/>
+
+<br/>
 
 7. Add Storage, the default is fine.  Click **Next: Add Tags**.
 
-<img src="IMAGES/img-10.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-10.png" alt="drawing" width="400px"/>
+
+<br/>
 
 8. Click **Add Tag** and for *Key* put `Name`.  For *Value* put `EC2noKeyPair`.  Click **Next: Configure Security Group**.
 
-<img src="IMAGES/img-11.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-11.png" alt="drawing" width="400px"/>
+
+<br/>
 
 9. Configure Security Group, use an existing security group or create a new one.  Ensure that the EC2 instance has access to **Port 22** and put your EC2.  Leaving port 22 open to the world will leave the instance vulnerable.  Click **Review and Launch**.
 
- <img src="IMAGES/img-12.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-12.png" alt="drawing" width="400px"/>
+
+<br/>
 
 10. Review Instance Launch, when complete.  Click **Launch**.
 
 11. A pop up will appear to set an EC2 Key Pair.  Select **Proceed without a key pair** and **check the box** to *acknowledge that you will not be able to connect to the instance unless you know the password built into the AMI*.
 
-<img src="IMAGES/img-13.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-13.png" alt="drawing" width="400px"/>
 
 </p></details>
 
@@ -118,13 +137,13 @@ OpenSSL is a robust, commercial-grade, and full-featured toolkit for the Transpo
 
 1. Download [OpenSSL](https://www.openssl.org/) onto your local computer.  For this project the instruction are written to be followed on a **mac**.
 
-1. If **brew** is installed then enter the following command into a terminal.  If you do not have brew installed then install it from this [link](https://brew.sh/).
+2. If **brew** is installed then enter the following command into a terminal.  If you do not have brew installed then install it from this [link](https://brew.sh/).
 
 	``
 	brew install openssl
 	``
 
-1. In the terminal enter the bellow command to verify that *OpenSSL version 1.0* or newer is installed.
+3. In the terminal enter the bellow command to verify that *OpenSSL version 1.0* or newer is installed.
 
 	``
     openssl version
@@ -138,7 +157,6 @@ OpenSSL is a robust, commercial-grade, and full-featured toolkit for the Transpo
 
 In this section you'll generate a key pair.
 
-
 <details>
 <summary><strong>Step-by-step instructions (expand for details)</strong></summary><p>
 
@@ -148,7 +166,7 @@ In this section you'll generate a key pair.
     openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out private_key.pem
     ``
 
-1. Verify that the private key has been generated and move to the next step.
+2. Verify that the private key has been generated and move to the next step.
 
 </p></details>
 
@@ -165,27 +183,37 @@ The Systems Manager gives an output that can run the command via the terminal an
 
 2. On the left hand side, expand the **SYSTEMS MANAGER SERVICES** section and click on **Run Command**.
 
-<img src="IMAGES/img-14.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-14.png" alt="drawing" width="400px"/>
 
-4. Click **Run Command**.  The screen can appear different if this service has been used in the past.
+<br/>
 
-<img src="IMAGES/img-15.png" alt="drawing" width="400px"/>
+3. Click **Run Command**.  The screen can appear different if this service has been used in the past.
 
-5. In the **Command document** section choose **AWS-RunShellScript**.
+	><img src="IMAGES/img-15.png" alt="drawing" width="400px"/>
 
-<img src="IMAGES/img-16.png" alt="drawing" width="400px"/>
+<br/>
 
-6. In the **Select Targets by** section select the EC2 instance created from section 2.  If there are now instances then the **SSM Agent** might not be installed on the EC2 or the role from section 1 is miss-configured.
+4. In the **Command document** section choose **AWS-RunShellScript**.
 
-<img src="IMAGES/img-17.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-16.png" alt="drawing" width="400px"/>
 
-7. Go down to the bottom of the page and expand the **AWS Command Line Interface command** section.
+<br/>
 
-<img src="IMAGES/img-18.png" alt="drawing" width="400px"/>
+5. In the **Select Targets by** section select the EC2 instance created from section 2.  If there are now instances then the **SSM Agent** might not be installed on the EC2 or the role from section 1 is miss-configured.
 
-8. **Copy** the contents in the **CLI command** text block and save to be used in the next steps.
+	><img src="IMAGES/img-17.png" alt="drawing" width="400px"/>
 
-9. Change the `"commands":[""]` section to `"commands":["echo \"\">> /home/ec2-user/.ssh/authorized_keys "]`
+<br/>
+
+6. Go down to the bottom of the page and expand the **AWS Command Line Interface command** section.
+
+	><img src="IMAGES/img-18.png" alt="drawing" width="400px"/>
+
+<br/>
+
+7. **Copy** the contents in the **CLI command** text block and save to be used in the next steps.
+
+8. Change the `"commands":[""]` section to `"commands":["echo \"\">> /home/ec2-user/.ssh/authorized_keys "]`
 
 	>example of what the command should look like.
 	```bash
@@ -254,7 +282,9 @@ In this module you'll SSH into the EC2 instance.
 
 2. Copy the **Public DNS (IPv4)** from the running EC2 instance.  Shown on the far right of the below image.
 
-<img src="IMAGES/img-19.png" alt="drawing" width="400px"/>
+	><img src="IMAGES/img-19.png" alt="drawing" width="400px"/>
+
+<br/>
 
 3. In the terminal enter the command `ssh -i "private_key.pem" ec2-user@` then paste the **Public DNS (IPv4)** to the end of the command. Press **enter** and below you should see...
 
@@ -265,7 +295,6 @@ In this module you'll SSH into the EC2 instance.
 	```
 
 </p></details>
-
 
 ---
 
