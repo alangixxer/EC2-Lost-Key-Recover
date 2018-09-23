@@ -39,19 +39,19 @@ Create an IAM Role that will be later attached to an EC2 instance.  This role wi
 
 2. Select **Roles** in the left navigation bar and then choose **Create new role**.
 
-<img src="IMAGES/img-1.png" alt="drawing" width="400px"/>
+><img src="IMAGES/img-1.png" alt="drawing" width="800px"/><br/>
 
 3. Select **EC2** as service to use the role. Click **Next: Permissions**.
 
-<img src="IMAGES/img-2.png" alt="drawing" width="400px"/>
+><img src="IMAGES/img-2.png" alt="drawing" width="800px"/><br/>
 
 4. Type **SSM** in the search bar and check the box left of **AmazonEC2RoleforSSM**. Click **Next: Review**.
 
-<img src="IMAGES/img-3.png" alt="drawing" width="400px"/>
+><img src="IMAGES/img-3.png" alt="drawing" width="800px"/><br/>
 
 5. Give it the role name like `AmazonEC2RoleforSSMRole` and click **Create Role**.
 
-<img src="IMAGES/img-4.png" alt="drawing" width="400px"/>
+><img src="IMAGES/img-4.png" alt="drawing" width="800px"/><br/>
 
 </p></details>
 
@@ -271,3 +271,7 @@ In this module you'll SSH into the EC2 instance.
 
 ## Finished
 You now SSH'd into an instance that was created with no key pair!
+
+
+
+
